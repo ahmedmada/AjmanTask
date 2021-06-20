@@ -13,7 +13,7 @@ import React from 'react';
 
 
 
-const Emoji = ({ }) => {
+const Emoji = ({ navigation }) => {
 
 
   const faceSelected = useSelector(state => state.faceReducer.face)
@@ -31,15 +31,19 @@ const Emoji = ({ }) => {
   });
   useEffect(() => {
     dispatch(setFace(JSON.stringify(emojiData)));
+    
   }, [emojiData]);
-
-  const onPress = (faceType) => {
-    alert('press')
-    if (emojiData.date === currentDay.getDay() + '-' + currentDay.getMonth() + '-' + currentDay.getFullYear()
-      && emojiData.times === 5) {
+  
+  function close (){
+  navigation.replace('TabNavigation');
+  }
+    const onPress = (faceType) => {
+    if (emojiData.date === currentDay.getDate() + '-' + currentDay.getMonth() + '-' + currentDay.getFullYear()
+      && emojiData.times >= 5) {
       alert('Five submissions per user per day is allowed');
       return;
     }
+    alert(''+currentDay.getDate() + '-' + currentDay.getMonth() + '-' + currentDay.getFullYear())
 
     setEmojiData({
       faceData: faceType,
@@ -49,6 +53,10 @@ const Emoji = ({ }) => {
 
     setSelected(faceType);
 
+  // navigation.replace('TabNavigation');
+  setTimeout(() => {
+    close()
+  }, 100);
   };
 
 
@@ -75,23 +83,32 @@ const Emoji = ({ }) => {
   }, []);
 
 
+  // colors={['#00aaff', '#49baf2', '#9cd1ff']}
+
   return (
 
     <LinearGradient
-      colors={['#00aaff', '#49baf2', '#9cd1ff']}
+    colors={['#00aaff', '#00aaff', '#00aaff']}
       start={{ x: 0.0, y: 0.1 }} end={{ x: 0.5, y: 0.35 }}
       locations={[1, 1.0, 0.1]}
       style={{ flex: 1 }}
     >
 
-      <TouchableOpacity>
-        <Text style={{ alignSelf: 'flex-end', marginTop: 50, marginRight: 20, color: '#fff', fontWeight: '400', fontSize: 22 }} >x</Text>
+      <TouchableOpacity onPress={() => navigation.replace('TabNavigation')}>
+        <Icon
+              source={images.close}
+              color={'#fff'}
+              style={{ alignSelf: 'flex-end', marginTop: 50, marginRight: 20,
+              width: 25, height: 25, margin: 12 }}
+            />
       </TouchableOpacity>
+
       <View style={{
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        marginTop: -100
+        paddingTop: -100,
+        
       }}>
         <Text style={{ color: '#fff', fontWeight: '600', fontSize: 15 }}>How was your experience?</Text>
         <View style={{ flexDirection: 'row', marginTop: 10, }}>

@@ -66,7 +66,7 @@ export default ({ progress, y }: ButtonProps) => {
         justifyContent: "center",
         alignItems: "center",
         transform: [{ translateX }, { translateY }],
-
+        backgroundColor:'#00aaff'
       }}
     >
       {faceSelected === null || faceSelected === '' || faceSelected.faceData === 0?

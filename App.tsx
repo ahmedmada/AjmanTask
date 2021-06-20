@@ -2,28 +2,26 @@ import React from 'react';
 import { Provider } from 'react-redux';
 // import store from './src/store/configureStore';
 import { store , persistor} from './src/store/configureStore';
-// import { Platform } from 'react-native';
-// import Naviagtion from 'navigations';
 import Naviagtion from './src/navigations';
 import { PersistGate } from 'redux-persist/integration/react';
+import { StatusBar,Platform } from 'react-native';
+import { colors} from './src/assets';
 
-// import MainStackNavigator from './src/navigation/AppNavigator'
-// import { Provider as StoreProvider } from 'react-redux'
-// import store from './src/redux/store'
 
-//import './ReactotronConfig';
-{/* <Provider store={store}>
-<Naviagtion />
-</Provider> */}
 export default function App() {
-  // return (
-  //   <StoreProvider store={store}>
-  //     <Naviagtion />
-  //   </StoreProvider>
-  // )
+
   return (
     <Provider store={store}>
       <PersistGate persistor={persistor} loading={null}>
+        {
+          Platform.OS === 'android' ? 
+          <StatusBar barStyle = "dark-content" hidden = {false} backgroundColor = '#ffffff' translucent = {true}/>
+
+            :
+            null
+        }
+      
+            
         <Naviagtion />
       </PersistGate>
     </Provider>

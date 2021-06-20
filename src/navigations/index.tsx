@@ -3,6 +3,7 @@ import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { navigationRef } from './navigationService';
 import TabsNavigator from './Tabs';
+import { createStackNavigator } from '@react-navigation/stack';
 
 import { View, StyleSheet, Dimensions, TouchableOpacity, Text } from 'react-native';
 import Animated, {
@@ -39,8 +40,9 @@ import { Emoji } from '../components';
 
 
 const { width } = Dimensions.get("window");
+const Stack = createStackNavigator();
 
-const RootNavigation = ({ }) => {
+const TabNavigation = ({ navigation }) => {
 
 
   const y = new Value(initialWaveCenter);
@@ -86,13 +88,47 @@ const RootNavigation = ({ }) => {
     waveHorRadius(progress)
   );
   const vertRadius = waveVertRadius(progress);
-  const sWidth = sideWidth(progress); 
+  const sWidth = sideWidth(progress);
 
+  // return (
+  //   <View style={{ flex: 1 }}>
+
+
+  //     <Emoji></Emoji>
+
+
+
+  //     <PanGestureHandler {...gestureHandler}>
+  //       <Animated.View style={StyleSheet.absoluteFill}>
+  //         <Weave sideWidth={sWidth} {...{ centerY, horRadius, vertRadius }}>
+
+  //           <NavigationContainer ref={navigationRef}>
+  //             <TabsNavigator />
+  //           </NavigationContainer>
+
+  //         </Weave>
+  //         <Button y={centerY} {...{ progress }} />
+  //       </Animated.View>
+  //     </PanGestureHandler>
+
+  //   </View>
+  // );
+
+  const [clicked, setClicked] = useState(false);
+
+
+  const onPress = () => {
+    if (clicked === false) {
+      setClicked(true);
+      navigation.replace('Emoji');
+    }
+  }
   return (
+
     <View style={{ flex: 1 }}>
 
 
-      <Emoji></Emoji>
+      <View style={{ flex: 1, backgroundColor: '#00aaff' }}></View>
 
 
 
@@ -100,17 +136,48 @@ const RootNavigation = ({ }) => {
         <Animated.View style={StyleSheet.absoluteFill}>
           <Weave sideWidth={sWidth} {...{ centerY, horRadius, vertRadius }}>
 
-            <NavigationContainer ref={navigationRef}>
-              <TabsNavigator />
-            </NavigationContainer>
+            <TabsNavigator />
 
           </Weave>
-          <Button y={centerY} {...{ progress }} />
+          <View onTouchEnd={() => onPress()} onTouchMove={() => onPress()} >
+
+            <Button y={centerY} {...{ progress }} />
+          </View>
         </Animated.View>
       </PanGestureHandler>
 
     </View>
+
   );
 }
 
+
+
+const RootNavigation = () => {
+
+  // I18n.locale = 'ar-Us';
+  // I18nManager.forceRTL(false);
+  // AsyncStorage.getItem('lang').then((value) => value.includes('ar')?I18n.locale = 'ar-Us':I18n.locale = 'en-Us')
+
+  return (
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="TabNavigation">
+
+        <Stack.Screen
+          name="TabNavigation"
+          component={TabNavigation}
+          // Hiding header for Splash Screen
+          options={{ headerShown: false }}
+        />
+
+        <Stack.Screen
+          name="Emoji"
+          component={Emoji}
+          options={{ headerShown: false }}
+        />
+
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
+};
 export default RootNavigation;

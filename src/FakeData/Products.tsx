@@ -17,42 +17,7 @@ const Products = [
     oldPrice: "400.50 SAR",
     discount: "20 %",
   },
-  {
-    id: 3,
-    name: "Nike",
-    desc: "Air Zoom Pegasus",
-    image: "https://almusbahperfume.com/pub/media/catalog/product/cache/75eed2686e01eb22cb4050b2f40ddf97/p/r/private_perfume.png",
-    price: "300.50 SAR",
-    oldPrice: "400.50 SAR",
-    discount: "30 %",
-  }, 
-  {
-    id: 1,
-    name: "Nike",
-    desc: "Air Zoom Pegasus",
-    image: "https://mostaql.hsoubcdn.com/uploads/663366/5f2fd3c0e05bf/63080082.jpg",
-    price: "300.50 SAR",
-    oldPrice: "400.50 SAR",
-    discount: "10 %",
-  },
-  {
-    id: 2,
-    name: "Nike",
-    desc: "Air Zoom Pegasus",
-    image: "https://community-static.arageek.com/wp-content/uploads/2021/02/صناعة-عطر-مركز.jpg",
-    price: "300.50 SAR",
-    oldPrice: "400.50 SAR",
-    discount: "20 %",
-  },
-  {
-    id: 3,
-    name: "Nike",
-    desc: "Air Zoom Pegasus",
-    image: "https://almusbahperfume.com/pub/media/catalog/product/cache/75eed2686e01eb22cb4050b2f40ddf97/p/r/private_perfume.png",
-    price: "300.50 SAR",
-    oldPrice: "400.50 SAR",
-    discount: "30 %",
-  },
+  
 ]
 
 export default Products;

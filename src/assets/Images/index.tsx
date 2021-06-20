@@ -10,4 +10,5 @@ export default {
   emoji1: require('./Icons/emoji1.png'),
   emoji2: require('./Icons/emoji2.png'),
   emoji3: require('./Icons/emoji3.png'),
+  close: require('./Icons/close.png'),
 };
