@@ -1,5 +1,5 @@
 
-import { View, Dimensions, TouchableOpacity, Text } from 'react-native';
+import { View, TouchableOpacity, Text } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 
 
@@ -36,7 +36,7 @@ const Emoji = ({ }) => {
   const onPress = (faceType) => {
     alert('press')
     if (emojiData.date === currentDay.getDay() + '-' + currentDay.getMonth() + '-' + currentDay.getFullYear()
-      && emojiData.times === 50) {
+      && emojiData.times === 5) {
       alert('Five submissions per user per day is allowed');
       return;
     }
