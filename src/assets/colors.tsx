@@ -1,0 +1,17 @@
+export default {
+  white: 'white',
+  whiteOpacity: 'rgba(255,255,255,0.4)',
+  greyOpacity: (opacity) => `rgba(236, 236, 236,${opacity})`,
+  blackOpacity: (opacity) => `rgba(0, 0, 0, ${opacity})`,
+  black: 'rgb(0,0,0)',
+  borderGrey: '#ECECEC',
+  yellow: '#FFEC01',
+  red: '#f00',
+  electricViolet: '#cf07d9',
+  greyBackground: '#F6F6F6',
+  redViolet: '#1E90FF',
+  grayViolet: '#ccc',
+  dimGray: '#707070',
+  silver: '#C2C2C2',
+  blue: '#f0f',
+};
